@@ -21,6 +21,14 @@
     </div>
   
     <nav class="uk-card uk-card-default uk-card-body">
+
+      <% if session[:user_id].nil? %>
+        <%= link_to "Inscription", new_user_path, class: "uk-button uk-button-default uk-button-small uk-button-secondary" %>
+        <%= link_to "Connexion", new_session_path, class: "uk-button uk-button-default uk-button-small uk-button-secondary"%>
+      <% else %>
+        <%= button_to "Deconnexion", session_path(session.id), method: :delete, class: "uk-button uk-button-default uk-button-small uk-button-secondary"%>
+      <% end %>
+
       <ul class="uk-nav uk-nav-default uk-margin-top uk-margin-bottom">
         <li class="uk-nav-header">Les potins</li>
         <li>
@@ -31,7 +39,7 @@
         <li>
           <%= link_to new_gossip_path do %>
             <span class="uk-margin-small-right" uk-icon="icon: plus-circle"></span> Ajouter un potin
-          <% end %>
+          <% end unless session[:user_id].nil? %>
         </li>
         <li class="uk-nav-header">Les pipelettes</li>
         <li>
@@ -45,6 +53,7 @@
           <% end %>
         </li>
       </ul>
+      
     </nav>
 
   </header>

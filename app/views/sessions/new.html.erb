@@ -1,0 +1,22 @@
+<article class="uk-card uk-card-default uk-card-body uk-margin">
+  <%= form_with model: @user, url: sessions_path, class: "uk-form-stacked" do |form| %>
+    <fieldset class="uk-fieldset">
+
+      <div class="uk-margin">
+        <%= form.label :email, "Email", class: "uk-form-label" %>
+        <div class="uk-controls">
+          <%= form.text_field :email, class: "uk-input" %>
+        </div>
+      </div>
+
+      <div class="uk-margin">
+        <%= form.label :password, "Mot de passe", class: "uk-form-label" %>
+        <div class="uk-controls">
+          <%= form.text_field :password, class: "uk-input" %>
+        </div>
+      </div>
+
+    </fieldset>
+    <%= form.submit "Connexion", class: "uk-button uk-button-default" %>
+  <% end %>
+</article>

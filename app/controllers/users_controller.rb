@@ -17,15 +17,13 @@ class UsersController < ApplicationController
       user_params(
         :first_name,
         :last_name,
-        :description,
         :email,
-        :age,
-        :city
+        :password
       )
     )
 
     if @user.save
-      redirect_to users_path
+      redirect_to root_path
     else
       render 'new'
     end
@@ -35,14 +33,15 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user.update_attribute(
+    @user.update(
       user_params(
         :first_name,
         :last_name,
-        :description,
         :email,
+        :password,
+        :description,
         :age,
-        :city
+        city_attributes: [:name]
       )
     )
 

@@ -8,5 +8,25 @@
 <% end %>
 
 <article class="uk-card uk-card-default uk-card-body uk-margin">
-  <%= render "gossip_form" %>
+  <h2>Modifier le potin</h2>
+  <%= form_with model: @gossip, class: "uk-form-stacked" do |form| %>
+    <fieldset class="uk-fieldset">
+
+      <div class="uk-margin">
+        <%= form.label :content, "C'est quoi ton potin ?", class: "uk-form-label" %>
+        <div class="uk-controls">
+          <%= form.text_area :content, class: "uk-textarea" %>
+        </div>
+      </div>
+
+      <div class="uk-margin">
+        <%= form.label :title, "Donne-lui un titre", class: "uk-form-label" %>
+        <div class="uk-controls">
+          <%= form.text_field :title, class: "uk-input" %>
+        </div>
+      </div>
+
+    </fieldset>
+    <%= form.submit "Valider les modifications", class: "uk-button uk-button-default" %>
+  <% end %>
 </article>

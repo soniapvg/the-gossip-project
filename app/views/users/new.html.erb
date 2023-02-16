@@ -1,5 +1,5 @@
 <% if @user.errors.any? %>
-  <p>Nous n'avons pas réussi à créer le potin pour la (ou les) raison(s) suivante(s) :</p>
+  <p>Nous n'avons pas réussi à vous enregister car :</p>
   <ul>
     <% @user.errors.full_messages.each do |message| %>
       <li><%= message %></li>
@@ -7,4 +7,39 @@
   </ul>
 <% end %>
 
-<%= render "user_form" %>
+<article class="uk-card uk-card-default uk-card-body uk-margin">
+  <%= form_with model: @user, class: "uk-form-stacked" do |form| %>
+    <fieldset class="uk-fieldset">
+
+      <div class="uk-margin">
+        <%= form.label :first_name, "Prénom", class: "uk-form-label" %>
+        <div class="uk-controls">
+          <%= form.text_field :first_name, class: "uk-input" %>
+        </div>
+      </div>
+
+      <div class="uk-margin">
+        <%= form.label :last_name, "Nom", class: "uk-form-label" %>
+        <div class="uk-controls">
+          <%= form.text_field :last_name, class: "uk-input" %>
+        </div>
+      </div>
+
+      <div class="uk-margin">
+        <%= form.label :email, "Email", class: "uk-form-label" %>
+        <div class="uk-controls">
+          <%= form.text_field :email, class: "uk-input" %>
+        </div>
+      </div>
+
+      <div class="uk-margin">
+        <%= form.label :password, "Mot de passe", class: "uk-form-label" %>
+        <div class="uk-controls">
+          <%= form.text_field :password, class: "uk-input" %>
+        </div>
+      </div>
+
+    </fieldset>
+    <%= form.submit "Inscription", class: "uk-button uk-button-default" %>
+  <% end %>
+</article>
