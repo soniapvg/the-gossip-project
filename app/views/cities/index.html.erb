@@ -1,0 +1,6 @@
+<% @cities.each do |city| %>
+<article class="uk-card uk-card-default uk-card-body uk-card-hover uk-margin">
+  <h2><%= city.name %></h2>
+  <p><%= link_to "Voir tous les potins dans cette ville", city %></p>
+</article>
+<% end %>

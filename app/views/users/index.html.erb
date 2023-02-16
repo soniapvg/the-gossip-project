@@ -1,0 +1,6 @@
+<% @users.each do |user| %>
+<article class="uk-card uk-card-default uk-card-body uk-card-hover uk-margin">
+  <h2><%= user.first_name %> <%= user.last_name %></h2>
+  <p><%= truncate(user.description, length: 17) %> <%= link_to "Voir le profil de #{user.first_name}", user %></p>
+</article>
+<% end %>

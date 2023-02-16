@@ -1,0 +1,8 @@
+<% @city.users.each do |user| %>
+   <% user.gossips.each do |gossip| %>
+      <article class="uk-card uk-card-default uk-card-body uk-card-hover uk-margin">
+      <h2><%= gossip.title %></h2>
+      <p><%= truncate(gossip.content, length: 17) %> <%= link_to "Voir le potin de #{gossip.user.first_name}", gossip %></p>
+      </article>
+   <% end %>
+<% end %>

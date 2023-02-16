@@ -1,0 +1,9 @@
+<%= form_with model: @gossip do |form| %>
+   <%= form.label :title, "Titre ?" %>
+   <%= form.text_field :title %>
+   <%= form.label :content, "C'est quoi le gossip ?" %>
+   <%= form.text_area :content, size: "60x10" %>
+   <%= form.label :user, "Qui l'a dit ?" %>
+   <%= form.text_field :user %>
+   <%= form.submit %>
+<% end %>

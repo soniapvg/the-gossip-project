@@ -1,0 +1,10 @@
+<% if @user.errors.any? %>
+  <p>Nous n'avons pas réussi à mettre à jour le potin pour la (ou les) raison(s) suivante(s) :</p>
+  <ul>
+    <% @user.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= render "user_form" %>

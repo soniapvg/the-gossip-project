@@ -6,6 +6,7 @@
 
 # Ignore bundler config.
 /.bundle
+Gemfile.lock
 
 # Ignore all logfiles and tempfiles.
 /log/*
@@ -17,7 +18,6 @@
 /tmp/pids/*
 !/tmp/pids/
 !/tmp/pids/.keep
-
 
 /public/assets
 

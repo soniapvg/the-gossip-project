@@ -1,0 +1,31 @@
+<article class="uk-card uk-card-default uk-card-body uk-margin">
+   <h2><%= @user.first_name %> <%= @user.last_name %></h2>
+   <hr>
+   <p><b><%= @user.gossips.count %></b> potin<%= @user.gossips.count.zero? ? '' : 's' %></p>
+   <ul class="uk-list">
+      <li>
+         
+      </li>
+      <hr>
+      <li>
+         <b>Age</b>
+         <br>
+         <%= @user.age %> ans
+      </li>
+      <li>
+         <b>Description</b>
+         <br>
+         <%= @user.description %>
+      </li>
+      <li>
+         <b>Email</b>
+         <br>
+         <%= @user.email %>
+      </li>
+      <li>
+         <b>Ville</b>
+         <br>
+         <%= @user.city.name %> (<%= link_to "voir les potins", @user.city %>)
+      </li>
+   </ul>
+</article>
