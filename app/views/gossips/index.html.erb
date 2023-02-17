@@ -1,5 +1,9 @@
-<% if @gossip %>
-  <p>Gossip bien sauvegardé</p>
+<!-- Alerts -->
+<% flash.each do |type, message| %>
+  <div class="uk-alert-<%= type %>" uk-alert>
+    <a class="uk-alert-close" uk-close></a>
+    <p><%= message %></p>
+  </div>
 <% end %>
 
 <% @gossips.each do |gossip| %>

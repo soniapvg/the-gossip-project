@@ -1,8 +1,9 @@
 class GossipsController < ApplicationController
   before_action :set_gossip, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user, except: [:index, :show]
 
   def index
-    @gossips = Gossip.all
+    @gossips = Gossip.order(created_at: :desc)
   end
 
   def show
@@ -15,11 +16,9 @@ class GossipsController < ApplicationController
 
   def create
     @gossip = Gossip.new(
-      gossip_params(
-        :title,
-        :content,
-        user_attributes: [:first_name]
-      )
+      title: params[:gossip][:title],
+      content: params[:gossip][:content],
+      user: current_user
     )
 
     if @gossip.save
@@ -34,14 +33,13 @@ class GossipsController < ApplicationController
 
   def update
     @gossip.update(
-      gossip_params(
-        :title,
-        :content,
-        user_attributes: [:first_name]
-      )
+      title: params[:gossip][:title],
+      content: params[:gossip][:content],
+      user: current_user
     )
 
     if @gossip.save
+      flash[:success] = "Ton potin est bien enregistré"
       redirect_to gossips_path
     else
       render 'edit'
@@ -50,7 +48,8 @@ class GossipsController < ApplicationController
 
   def destroy
     @gossip.destroy
-    redirect_to gossips_path
+    flash[:success] = "Ton potin a bien été supprimé"
+    redirect_to(gossips_path)
   end
 
   private
@@ -61,5 +60,12 @@ class GossipsController < ApplicationController
 
   def set_gossip
     @gossip = Gossip.find(params[:id])
+  end
+
+  def authenticate_user
+    unless current_user
+      flash[:warning] = "Connexion obligatoire"
+      redirect_to(new_session_path)
+    end
   end
 end

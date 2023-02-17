@@ -7,8 +7,8 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by(email: params[:email])
     if user && user.authenticate(params[:password])
-      session[:user_id] = user.id
-      redirect_to new_gossip_path
+      log_in(user)
+      redirect_to(new_gossip_path)
     else
       # flash.now[:danger] = 'Invalid email/password combination'
       render 'new'
@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session.delete(:user_id)
-    redirect_back_or_to gossips_path
+    redirect_back_or_to(gossips_path)
   end
 
 end

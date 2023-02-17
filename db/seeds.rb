@@ -1,3 +1,11 @@
+City.destroy_all
+Gossip.destroy_all
+User.destroy_all
+
+ActiveRecord::Base.connection.reset_pk_sequence!('cities')
+ActiveRecord::Base.connection.reset_pk_sequence!('gossips')
+ActiveRecord::Base.connection.reset_pk_sequence!('users')
+
 5.times do
   City.create(
     name: Faker::Address.city,
@@ -15,7 +23,8 @@ end
     age: rand(18..88),
     email: email,
     description: Faker::Lorem.paragraph,
-    city: City.all.sample
+    city: City.all.sample,
+    password: BCrypt::Password.create('THP2023')
   )
 end
 

@@ -18,3 +18,16 @@
 - [Rails version 7.0.4 or up](https://rubyonrails.org)
 - [Bundler gem](https://bundler.io)
 - [PostgreSQL version 9.3 or up](https://www.postgresql.org)
+
+## Roadmap
+
+- [x] v1
+   - [x] Add, show and edit gossips
+- [x] v2
+   - [x] Overall look'n'feel (basic)
+   - [x] Sign in / Log in / Log out
+   - [x] Add, edit and delete gossips, only when logged in
+- [ ] v3
+   - [ ] Comments
+   - [ ] Tags
+   - [ ] Likes

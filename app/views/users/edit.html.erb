@@ -1,10 +1,13 @@
 <% if @user.errors.any? %>
-  <p>Nous n'avons pas réussi à mettre à jour vos infos car :</p>
-  <ul>
-    <% @user.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
+  <div class="uk-alert-danger" uk-alert>
+      <a class="uk-alert-close" uk-close></a>
+      <p>Nous n'avons pas réussi à mettre à jour tes infos car :</p>
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
 <% end %>
 
 <article class="uk-card uk-card-default uk-card-body uk-margin">

@@ -1,3 +1,12 @@
+<!-- Alerts -->
+<% flash.each do |type, message| %>
+  <div class="uk-alert-<%= type %>" uk-alert>
+    <a class="uk-alert-close" uk-close></a>
+    <p><%= message %></p>
+  </div>
+<% end %>
+
+<!-- Form -->
 <article class="uk-card uk-card-default uk-card-body uk-margin">
   <%= form_with model: @user, url: sessions_path, class: "uk-form-stacked" do |form| %>
     <fieldset class="uk-fieldset">

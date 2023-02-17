@@ -1,12 +1,24 @@
-<% if @gossip.errors.any? %>
-  <p>Nous n'avons pas réussi à mettre à jour le potin pour la (ou les) raison(s) suivante(s) :</p>
-  <ul>
-    <% @gossip.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
+<!-- Alerts -->
+<% flash.each do |type, message| %>
+  <div class="uk-alert-<%= type %>" uk-alert>
+    <a class="uk-alert-close" uk-close></a>
+    <p><%= message %></p>
+  </div>
 <% end %>
 
+<% if @gossip.errors.any? %>
+  <div class="uk-alert-danger" uk-alert>
+      <a class="uk-alert-close" uk-close></a>
+      <p>Nous n'avons pas réussi à mettre à jour ton potin car :</p>
+      <ul>
+      <% @gossip.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<!-- Content -->
 <article class="uk-card uk-card-default uk-card-body uk-margin">
   <h2>Modifier le potin</h2>
   <%= form_with model: @gossip, class: "uk-form-stacked" do |form| %>
@@ -28,5 +40,7 @@
 
     </fieldset>
     <%= form.submit "Valider les modifications", class: "uk-button uk-button-default" %>
+    <%= button_to "Supprimer le potin", @gossip, method: :delete, class: "uk-button uk-button-default uk-margin" %>
+    
   <% end %>
 </article>

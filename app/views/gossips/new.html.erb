@@ -1,5 +1,5 @@
 <% if @gossip.errors.any? %>
-  <p>Nous n'avons pas réussi à créer le potin pour la (ou les) raison(s) suivante(s) :</p>
+  <p>Nous n'avons pas réussi à enregistrer ton potin car</p>
   <ul>
     <% @gossip.errors.full_messages.each do |message| %>
       <li><%= message %></li>
@@ -8,7 +8,7 @@
 <% end %>
 
 <article class="uk-card uk-card-default uk-card-body uk-margin">
-  <h2>Créer un potin</h2>
+  <h2>Publie un potin</h2>
   <%= form_with model: @gossip, class: "uk-form-stacked" do |form| %>
     <fieldset class="uk-fieldset">
 

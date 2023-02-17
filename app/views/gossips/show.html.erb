@@ -1,16 +1,19 @@
 <article class="uk-card uk-card-default uk-card-body uk-margin">
    <h2><%= @gossip.title %></h2>
-   <p><%= @gossip.content %></p>
-   <hr>
    <p>
-      <span uk-icon="happy"></span> <%= @gossip.user.first_name %> <%= @gossip.user.last_name %> 
-      (<%= link_to "voir le profil", @gossip.user%>)
+      <span uk-icon="happy"></span> <%= @gossip.user.first_name %> <%= @gossip.user.last_name %> (<%= link_to "voir le profil", @gossip.user%>)
       <br>
-      <span uk-icon="location"></span> <%= @gossip.user.city.name %> <%= @gossip.user.last_name %> 
-      (<%= link_to "voir les potins", @gossip.user.city%>)
+      <% unless @gossip.user.city.nil? %>
+         <span uk-icon="location"></span> <%= @gossip.user.city.name %> (<%= link_to "voir les potins", @gossip.user.city%>)
+      <% end %>
    </p>
-   <p>
-      <%= link_to "Modifier le potin", edit_gossip_path(@gossip), class: "uk-button uk-button-default" %>
-      <%= link_to "Supprimer le potin", edit_gossip_path(@gossip), class: "uk-button uk-button-default" %>
-   </p>
+   <hr>
+   <p class="uk-margin-large"><%= @gossip.content %></p>
+   
+   <% if current_user?(@gossip.user) %>
+      <div class="uk-margin-large">
+         <%= link_to "Modifier le potin", edit_gossip_path(@gossip), class: "uk-button uk-button-default" %>
+         <%= button_to "Supprimer le potin", @gossip, method: :delete, class: "uk-button uk-button-default uk-margin" %>
+      </div>
+   <% end %>
 </article>
