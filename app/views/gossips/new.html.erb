@@ -1,10 +1,21 @@
+<!-- Alerts -->
+<% flash.each do |type, message| %>
+  <div class="uk-alert-<%= type %>" uk-alert>
+    <a class="uk-alert-close" uk-close></a>
+    <p><%= message %></p>
+  </div>
+<% end %>
+
 <% if @gossip.errors.any? %>
-  <p>Nous n'avons pas réussi à enregistrer ton potin car</p>
-  <ul>
-    <% @gossip.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
+  <div class="uk-alert-danger" uk-alert>
+      <a class="uk-alert-close" uk-close></a>
+      <p>Nous n'avons pas réussi à enregistrer ton potin car :</p>
+      <ul>
+      <% @gossip.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
 <% end %>
 
 <article class="uk-card uk-card-default uk-card-body uk-margin">
