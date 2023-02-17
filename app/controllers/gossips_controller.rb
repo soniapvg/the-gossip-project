@@ -22,6 +22,7 @@ class GossipsController < ApplicationController
     )
 
     if @gossip.save
+      flash[:success] = "Ton potin est bien enregistré"
       redirect_to gossips_path
     else
       render 'new'
@@ -39,7 +40,7 @@ class GossipsController < ApplicationController
     )
 
     if @gossip.save
-      flash[:success] = "Ton potin est bien enregistré"
+      flash[:success] = "Ton potin est bien mis à jour"
       redirect_to gossips_path
     else
       render 'edit'
